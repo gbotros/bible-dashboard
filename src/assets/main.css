@@ -1,0 +1,41 @@
+@import './base.css';
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px;
+  font-weight: normal;
+}
+
+.button {
+  /* flex: 1 0 0px; */
+  text-align: center;
+  margin: 2px;
+  padding: 1rem 3rem;
+  border: 1px solid;
+  border-radius: 5px;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  border-color: var(--color-border);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.button:hover {
+  /* dont move the button when changing the border width by offsetting the margin value*/
+  margin: 1px;
+  border: 2px solid;
+  border-color: var(--color-border-hover);
+}
+
+a,
+a:visited,
+a:hover,
+a:visited:hover {
+  color: inherit;
+}
+
+
+.bold {
+  font-weight: bold;
+}
