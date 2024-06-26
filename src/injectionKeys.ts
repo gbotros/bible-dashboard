@@ -4,9 +4,11 @@ import type { WordPiePerTestamentFactory } from './components/wordPiePerTestamen
 import type { WordPiePerBookFactory } from './components/wordPiePerBook/wordPiePerBookFactory'
 import type { WordReferencesFactory } from './components/wordReferences/wordReferencesFactory'
 import type { NewWordsAppearanceFactory } from './components/newWordsAppearance/newWordsAppearanceFactory'
+import type { WordGospelsRadarFactory } from './components/wordGospelsRadar/wordGospelsRadarFactory'
 
 export const BibleLoaderServiceKey = Symbol() as InjectionKey<BibleLoaderService>
 export const WordPiePerTestamentFactoryKey = Symbol() as InjectionKey<WordPiePerTestamentFactory>
 export const WordPiePerBookFactoryKey = Symbol() as InjectionKey<WordPiePerBookFactory>
 export const WordReferencesFactoryKey = Symbol() as InjectionKey<WordReferencesFactory>
 export const NewWordsAppearanceFactoryKey = Symbol() as InjectionKey<NewWordsAppearanceFactory>
+export const WordGospelsRadarFactoryKey = Symbol() as InjectionKey<WordGospelsRadarFactory>

@@ -3,6 +3,7 @@ import { computed, inject, ref } from 'vue'
 import {
   BibleLoaderServiceKey,
   NewWordsAppearanceFactoryKey,
+  WordGospelsRadarFactoryKey,
   WordPiePerBookFactoryKey,
   WordPiePerTestamentFactoryKey,
   WordReferencesFactoryKey
@@ -10,6 +11,7 @@ import {
 import WordsFilter from '@/components/WordsList.vue'
 import WordPiePerTestament from '@/components/wordPiePerTestament/wordPiePerTestament.vue'
 import WordPiePerBook from '@/components/wordPiePerBook/wordPiePerBook.vue'
+import WordGospelsRadar from '@/components/wordGospelsRadar/wordGospelsRadar.vue'
 import WordFilterInput from '@/components/wordFilterInput.vue'
 import WordReferences from '@/components/wordReferences/wordReferences.vue'
 import { WordPiePerTestamentModel } from '@/components/wordPiePerTestament/wordPiePerTestamentModel'
@@ -21,6 +23,8 @@ import type { BibleLoaderService } from '@/data/bibleLoader'
 import type { IVerse } from '@/data/iBible'
 import { Testament } from '@/data/bibleBookMeta'
 import { NewWordsAppearanceFactory } from '@/components/newWordsAppearance/newWordsAppearanceFactory'
+import type { WordGospelsRadarFactory } from '@/components/wordGospelsRadar/wordGospelsRadarFactory'
+import { WordGospelsRadarModel } from '@/components/wordGospelsRadar/wordGospelsRadarModel'
 
 const wordPiePerTestamentFactory = inject(
   WordPiePerTestamentFactoryKey
@@ -30,6 +34,7 @@ const bibleLoaderService = inject(BibleLoaderServiceKey) as BibleLoaderService
 const wordPiePerBookFactory = inject(WordPiePerBookFactoryKey) as WordPiePerBookFactory
 const wordReferencesFactory = inject(WordReferencesFactoryKey) as WordReferencesFactory
 const newWordsAppearanceFactory = inject(NewWordsAppearanceFactoryKey) as NewWordsAppearanceFactory
+const wordGospelsRadarFactory = inject(WordGospelsRadarFactoryKey) as WordGospelsRadarFactory
 
 // intialize
 bibleLoaderService.getTheBible()
@@ -39,6 +44,7 @@ const vs: IVerse[] = []
 const wordVerses = ref(vs)
 const wordPiePerTestamentModel = ref(new WordPiePerTestamentModel())
 const wordPiePerBookModel = ref(new WordPiePerBookModel())
+const wordGospelsRadarModel = ref(new WordGospelsRadarModel())
 
 const testamentFilter = ref(undefined as Testament | undefined)
 const bookNameFilter = ref(undefined as string | undefined)
@@ -72,6 +78,7 @@ function updateFactories(): void {
   updateWordPiePerTestamentFactory()
   updateWordPiePerBookFactory()
   updateWordReferences()
+  updateGospelsRadarFactory()
 
   // expermental component
   newWordsAppearanceFactory.getModel()
@@ -93,6 +100,12 @@ function updateWordReferences(): void {
     selectedWord.value,
     testamentFilter.value,
     bookNameFilter.value
+  )
+}
+
+function updateGospelsRadarFactory(): void {
+  wordGospelsRadarModel.value = wordGospelsRadarFactory.getModelFor(
+    selectedWord.value
   )
 }
 
@@ -151,6 +164,14 @@ const bookNameFilterString = computed(() => {
       <div class="word-graph">
         <WordPiePerBook :wordPiePerBookModel="wordPiePerBookModel" @book-selected="bookSelected" />
       </div>
+    </div>
+
+    <div class="word-graphs" v-if="wordGospelsRadarModel.show">
+      <div class="word-graph">
+        <WordGospelsRadar :word-gospels-radar-model="wordGospelsRadarModel"/>
+      </div>
+
+ 
     </div>
 
     <div class="filters">
