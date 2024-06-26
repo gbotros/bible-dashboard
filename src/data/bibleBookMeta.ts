@@ -12,7 +12,8 @@ export interface IBibleBookMeta {
   division: string
   chronologicalOrder: number
 }
-
+// using biblegateway as the source for the chronologicalOrder
+// https://www.biblegateway.com/blog/2016/02/when-was-each-book-of-the-bible-written/
 export const Genesis: IBibleBookMeta = {
   name: 'Genesis',
   abbreviation: 'Gen',
@@ -66,7 +67,7 @@ export const Joshua: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#edc4b3',
   division: 'Historical',
-  chronologicalOrder: 7
+  chronologicalOrder: 8
 }
 export const Judges: IBibleBookMeta = {
   name: 'Judges',
@@ -75,7 +76,7 @@ export const Judges: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#e6b8a2',
   division: 'Historical',
-  chronologicalOrder: 8
+  chronologicalOrder: 9
 }
 export const Ruth: IBibleBookMeta = {
   name: 'Ruth',
@@ -84,7 +85,7 @@ export const Ruth: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#deab90',
   division: 'Historical',
-  chronologicalOrder: 9
+  chronologicalOrder: 10
 }
 export const OneSamuel: IBibleBookMeta = {
   name: '1 Samuel',
@@ -93,7 +94,7 @@ export const OneSamuel: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#d69f7e',
   division: 'Historical',
-  chronologicalOrder: 10
+  chronologicalOrder: 14
 }
 export const TwoSamuel: IBibleBookMeta = {
   name: '2 Samuel',
@@ -102,7 +103,7 @@ export const TwoSamuel: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#cd9777',
   division: 'Historical',
-  chronologicalOrder: 11
+  chronologicalOrder: 15
 }
 export const OneKings: IBibleBookMeta = {
   name: '1 Kings',
@@ -111,7 +112,7 @@ export const OneKings: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#c38e70',
   division: 'Historical',
-  chronologicalOrder: 17
+  chronologicalOrder: 29
 }
 export const TwoKings: IBibleBookMeta = {
   name: '2 Kings',
@@ -120,7 +121,7 @@ export const TwoKings: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#b07d62',
   division: 'Historical',
-  chronologicalOrder: 18
+  chronologicalOrder: 30
 }
 export const OneChronicles: IBibleBookMeta = {
   name: '1 Chronicles',
@@ -129,7 +130,7 @@ export const OneChronicles: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#9d6b53',
   division: 'Historical',
-  chronologicalOrder: 12
+  chronologicalOrder: 35
 }
 export const TwoChronicles: IBibleBookMeta = {
   name: '2 Chronicles',
@@ -138,7 +139,7 @@ export const TwoChronicles: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#8a5a44',
   division: 'Historical',
-  chronologicalOrder: 19
+  chronologicalOrder: 36
 }
 export const Ezra: IBibleBookMeta = {
   name: 'Ezra',
@@ -156,7 +157,7 @@ export const Nehemiah: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#653a2a',
   division: 'Historical',
-  chronologicalOrder: 36
+  chronologicalOrder: 39
 }
 export const Esther: IBibleBookMeta = {
   name: 'Esther',
@@ -165,7 +166,7 @@ export const Esther: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#532c1e',
   division: 'Historical',
-  chronologicalOrder: 35
+  chronologicalOrder: 37
 }
 export const Job: IBibleBookMeta = {
   name: 'Job',
@@ -183,7 +184,7 @@ export const Psalms: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#ffe246',
   division: 'Poetry',
-  chronologicalOrder: 13
+  chronologicalOrder: 7
 }
 export const Proverbs: IBibleBookMeta = {
   name: 'Proverbs',
@@ -192,7 +193,7 @@ export const Proverbs: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#ffda3d',
   division: 'Poetry',
-  chronologicalOrder: 15
+  chronologicalOrder: 12
 }
 export const Ecclesiastes: IBibleBookMeta = {
   name: 'Ecclesiastes',
@@ -201,7 +202,7 @@ export const Ecclesiastes: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#fecf3e',
   division: 'Poetry',
-  chronologicalOrder: 16
+  chronologicalOrder: 13
 }
 export const SongOfSongs: IBibleBookMeta = {
   name: 'The Song of Songs',
@@ -210,7 +211,7 @@ export const SongOfSongs: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#fdc43f',
   division: 'Poetry',
-  chronologicalOrder: 14
+  chronologicalOrder: 11
 }
 export const Isaiah: IBibleBookMeta = {
   name: 'Isaiah',
@@ -219,7 +220,7 @@ export const Isaiah: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#e3f2fd',
   division: 'Major Prophets',
-  chronologicalOrder: 20
+  chronologicalOrder: 22
 }
 export const Jeremiah: IBibleBookMeta = {
   name: 'Jeremiah',
@@ -228,7 +229,7 @@ export const Jeremiah: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#bbdefb',
   division: 'Major Prophets',
-  chronologicalOrder: 21
+  chronologicalOrder: 28
 }
 export const Lamentations: IBibleBookMeta = {
   name: 'Lamentations',
@@ -237,7 +238,7 @@ export const Lamentations: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#90caf9',
   division: 'Major Prophets',
-  chronologicalOrder: 22
+  chronologicalOrder: 27
 }
 export const Ezekiel: IBibleBookMeta = {
   name: 'Ezekiel',
@@ -246,7 +247,7 @@ export const Ezekiel: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#64b5f6',
   division: 'Major Prophets',
-  chronologicalOrder: 32
+  chronologicalOrder: 26
 }
 export const Daniel: IBibleBookMeta = {
   name: 'Daniel',
@@ -255,7 +256,7 @@ export const Daniel: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#42a5f5',
   division: 'Major Prophets',
-  chronologicalOrder: 33
+  chronologicalOrder: 31
 }
 export const Hosea: IBibleBookMeta = {
   name: 'Hosea',
@@ -264,7 +265,7 @@ export const Hosea: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#2196f3',
   division: 'Minor Prophets',
-  chronologicalOrder: 23
+  chronologicalOrder: 20
 }
 export const Joel: IBibleBookMeta = {
   name: 'Joel',
@@ -273,7 +274,7 @@ export const Joel: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#1e88e5',
   division: 'Minor Prophets',
-  chronologicalOrder: 24
+  chronologicalOrder: 17
 }
 export const Amos: IBibleBookMeta = {
   name: 'Amos',
@@ -282,7 +283,7 @@ export const Amos: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#1976d2',
   division: 'Minor Prophets',
-  chronologicalOrder: 25
+  chronologicalOrder: 19
 }
 export const Obadiah: IBibleBookMeta = {
   name: 'Obadiah',
@@ -291,7 +292,7 @@ export const Obadiah: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#1565c0',
   division: 'Minor Prophets',
-  chronologicalOrder: 26
+  chronologicalOrder: 16
 }
 export const Jonah: IBibleBookMeta = {
   name: 'Jonah',
@@ -300,7 +301,7 @@ export const Jonah: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#0d47a1',
   division: 'Minor Prophets',
-  chronologicalOrder: 27
+  chronologicalOrder: 18
 }
 export const Micah: IBibleBookMeta = {
   name: 'Micah',
@@ -309,7 +310,7 @@ export const Micah: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#0f80aa',
   division: 'Minor Prophets',
-  chronologicalOrder: 28
+  chronologicalOrder: 21
 }
 export const Nahum: IBibleBookMeta = {
   name: 'Nahum',
@@ -318,7 +319,7 @@ export const Nahum: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#16679a',
   division: 'Minor Prophets',
-  chronologicalOrder: 29
+  chronologicalOrder: 23
 }
 export const Habakkuk: IBibleBookMeta = {
   name: 'Habakkuk',
@@ -327,7 +328,7 @@ export const Habakkuk: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#1a5b92',
   division: 'Minor Prophets',
-  chronologicalOrder: 30
+  chronologicalOrder: 25
 }
 export const Zephaniah: IBibleBookMeta = {
   name: 'Zephaniah',
@@ -336,7 +337,7 @@ export const Zephaniah: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#1c558e',
   division: 'Minor Prophets',
-  chronologicalOrder: 31
+  chronologicalOrder: 24
 }
 export const Haggai: IBibleBookMeta = {
   name: 'Haggai',
@@ -345,7 +346,7 @@ export const Haggai: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#1d4e89',
   division: 'Minor Prophets',
-  chronologicalOrder: 36
+  chronologicalOrder: 32
 }
 export const Zechariah: IBibleBookMeta = {
   name: 'Zechariah',
@@ -354,7 +355,7 @@ export const Zechariah: IBibleBookMeta = {
   testament: Testament.oldTestament,
   color: '#3fc1c0',
   division: 'Minor Prophets',
-  chronologicalOrder: 37
+  chronologicalOrder: 33
 }
 export const Malachi: IBibleBookMeta = {
   name: 'Malachi',
@@ -373,7 +374,7 @@ export const Matthew: IBibleBookMeta = {
   testament: Testament.newTestament,
   color: '#ff5400',
   division: 'The Gospels',
-  chronologicalOrder: 40
+  chronologicalOrder: 43
 }
 export const Mark: IBibleBookMeta = {
   name: 'Mark',
@@ -382,7 +383,7 @@ export const Mark: IBibleBookMeta = {
   testament: Testament.newTestament,
   color: '#ff6d00',
   division: 'The Gospels',
-  chronologicalOrder: 39
+  chronologicalOrder: 42
 }
 export const Luke: IBibleBookMeta = {
   name: 'Luke',
@@ -391,7 +392,7 @@ export const Luke: IBibleBookMeta = {
   testament: Testament.newTestament,
   color: '#ff8500',
   division: 'The Gospels',
-  chronologicalOrder: 41
+  chronologicalOrder: 49
 }
 export const John: IBibleBookMeta = {
   name: 'John',
@@ -400,7 +401,7 @@ export const John: IBibleBookMeta = {
   testament: Testament.newTestament,
   color: '#ff9100',
   division: 'The Gospels',
-  chronologicalOrder: 42
+  chronologicalOrder: 62
 }
 export const Acts: IBibleBookMeta = {
   name: 'Acts',
@@ -409,7 +410,7 @@ export const Acts: IBibleBookMeta = {
   testament: Testament.newTestament,
   color: '#6247aa',
   division: 'Acts',
-  chronologicalOrder: 43
+  chronologicalOrder: 54
 }
 export const Romans: IBibleBookMeta = {
   name: 'Romans',
@@ -418,7 +419,7 @@ export const Romans: IBibleBookMeta = {
   testament: Testament.newTestament,
   color: '#99e2b4',
   division: 'Pauline Epistles',
-  chronologicalOrder: 49
+  chronologicalOrder: 48
 }
 export const OneCorinthians: IBibleBookMeta = {
   name: '1 Corinthians',
@@ -445,7 +446,7 @@ export const Galatians: IBibleBookMeta = {
   testament: Testament.newTestament,
   color: '#78c6a3',
   division: 'Pauline Epistles',
-  chronologicalOrder: 48
+  chronologicalOrder: 41
 }
 export const Ephesians: IBibleBookMeta = {
   name: 'Ephesians',
@@ -454,7 +455,7 @@ export const Ephesians: IBibleBookMeta = {
   testament: Testament.newTestament,
   color: '#67b99a',
   division: 'Pauline Epistles',
-  chronologicalOrder: 53
+  chronologicalOrder: 50
 }
 export const Philippians: IBibleBookMeta = {
   name: 'Philippians',
@@ -463,7 +464,7 @@ export const Philippians: IBibleBookMeta = {
   testament: Testament.newTestament,
   color: '#56ab91',
   division: 'Pauline Epistles',
-  chronologicalOrder: 54
+  chronologicalOrder: 51
 }
 export const Colossians: IBibleBookMeta = {
   name: 'Colossians',
@@ -472,7 +473,7 @@ export const Colossians: IBibleBookMeta = {
   testament: Testament.newTestament,
   color: '#469d89',
   division: 'Pauline Epistles',
-  chronologicalOrder: 51
+  chronologicalOrder: 53
 }
 export const OneThessalonians: IBibleBookMeta = {
   name: '1 Thessalonians',
@@ -499,7 +500,7 @@ export const OneTimothy: IBibleBookMeta = {
   testament: Testament.newTestament,
   color: '#14746f',
   division: 'Pauline Epistles',
-  chronologicalOrder: 58
+  chronologicalOrder: 55
 }
 export const TwoTimothy: IBibleBookMeta = {
   name: '2 Timothy',
@@ -508,7 +509,7 @@ export const TwoTimothy: IBibleBookMeta = {
   testament: Testament.newTestament,
   color: '#036666',
   division: 'Pauline Epistles',
-  chronologicalOrder: 60
+  chronologicalOrder: 58
 }
 export const Titus: IBibleBookMeta = {
   name: 'Titus',
@@ -517,7 +518,7 @@ export const Titus: IBibleBookMeta = {
   testament: Testament.newTestament,
   color: '#10451d',
   division: 'Pauline Epistles',
-  chronologicalOrder: 59
+  chronologicalOrder: 56
 }
 export const Philemon: IBibleBookMeta = {
   name: 'Philemon',
@@ -535,7 +536,7 @@ export const Hebrews: IBibleBookMeta = {
   testament: Testament.newTestament,
   color: '#1a7431',
   division: 'Epistles',
-  chronologicalOrder: 57
+  chronologicalOrder: 60
 }
 export const James: IBibleBookMeta = {
   name: 'James',
@@ -544,7 +545,7 @@ export const James: IBibleBookMeta = {
   testament: Testament.newTestament,
   color: '#208b3a',
   division: 'Epistles',
-  chronologicalOrder: 50
+  chronologicalOrder: 40
 }
 export const OnePeter: IBibleBookMeta = {
   name: '1 Peter',
@@ -553,7 +554,7 @@ export const OnePeter: IBibleBookMeta = {
   testament: Testament.newTestament,
   color: '#25a244',
   division: 'Epistles',
-  chronologicalOrder: 55
+  chronologicalOrder: 57
 }
 export const TwoPeter: IBibleBookMeta = {
   name: '2 Peter',
@@ -562,7 +563,7 @@ export const TwoPeter: IBibleBookMeta = {
   testament: Testament.newTestament,
   color: '#2dc653',
   division: 'Epistles',
-  chronologicalOrder: 56
+  chronologicalOrder: 59
 }
 export const OneJohn: IBibleBookMeta = {
   name: '1 John',

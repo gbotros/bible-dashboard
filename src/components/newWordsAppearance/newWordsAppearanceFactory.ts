@@ -40,7 +40,10 @@ export class NewWordsAppearanceFactory {
       console.log(book[0])
       console.log(newWordsPerBook)
     })
-
-    console.log(orderedBooks)
+    
+// orderedBooks.map((ob, i)=> (i+1) + " " + ob[0] ).forEach(it=>
+//      console.log(it)
+// )
+ 
   }
 }
