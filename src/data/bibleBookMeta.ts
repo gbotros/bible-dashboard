@@ -679,3 +679,15 @@ export const MetaBibleBooksDictionary: { [bookName: string]: IBibleBookMeta } = 
   Jude,
   Revelation
 }
+
+export const MetaBibleBooksOrderedChronologically = Object.entries(MetaBibleBooksDictionary).sort(
+  (a, b) => a[1].chronologicalOrder - b[1].chronologicalOrder
+)
+
+export const MetaBibleBooksOrderedChronologicallyDesc = Object.entries(MetaBibleBooksDictionary).sort(
+  (a, b) => b[1].chronologicalOrder - a[1].chronologicalOrder
+)
+
+
+
+

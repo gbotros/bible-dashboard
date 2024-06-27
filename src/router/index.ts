@@ -1,21 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import BookView from '@/views/BookView.vue'
+import NewWordsAppearanceView from '@/views/NewWordsAppearanceView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: '/:word',
       name: 'home',
       component: HomeView
     },
     {
       path: '/book',
       name: 'book',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/BookView.vue')
+      component: BookView
+    },
+    {
+      path: '/new-words',
+      name: 'newWords',
+      component: NewWordsAppearanceView
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'all',
+      component: HomeView
     }
   ]
 })

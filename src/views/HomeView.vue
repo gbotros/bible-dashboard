@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, inject, ref } from 'vue'
+import { computed, inject, ref, watch } from 'vue'
 import {
   BibleLoaderServiceKey,
   NewWordsAppearanceFactoryKey,
@@ -25,6 +25,7 @@ import { Testament } from '@/data/bibleBookMeta'
 import { NewWordsAppearanceFactory } from '@/components/newWordsAppearance/newWordsAppearanceFactory'
 import type { WordGospelsRadarFactory } from '@/components/wordGospelsRadar/wordGospelsRadarFactory'
 import { WordGospelsRadarModel } from '@/components/wordGospelsRadar/wordGospelsRadarModel'
+import { useRoute } from 'vue-router'
 
 const wordPiePerTestamentFactory = inject(
   WordPiePerTestamentFactoryKey
@@ -35,11 +36,13 @@ const wordPiePerBookFactory = inject(WordPiePerBookFactoryKey) as WordPiePerBook
 const wordReferencesFactory = inject(WordReferencesFactoryKey) as WordReferencesFactory
 const newWordsAppearanceFactory = inject(NewWordsAppearanceFactoryKey) as NewWordsAppearanceFactory
 const wordGospelsRadarFactory = inject(WordGospelsRadarFactoryKey) as WordGospelsRadarFactory
-
+  
 // intialize
+const route = useRoute()
+const defaultSearch = 'god';
 bibleLoaderService.getTheBible()
-const searchTerm = ref('angel')
-const selectedWord = ref('angel')
+const searchTerm = ref(<string>route.params.word ?? defaultSearch)
+const selectedWord = ref(<string>route.params.word ?? defaultSearch)
 const vs: IVerse[] = []
 const wordVerses = ref(vs)
 const wordPiePerTestamentModel = ref(new WordPiePerTestamentModel())
@@ -139,10 +142,14 @@ const bookNameFilterString = computed(() => {
 
 <template>
   <div>
-    
+
     <div class="header">
       <h1>The Bible word analysis</h1>
+
+      <RouterLink to="/new-words">View new words appearance on books ordered from older to newer</RouterLink>
     </div>
+
+
     <div class="filter-header">
       <WordFilterInput @update-search-term="searchTermUpdated" :search="searchTerm" />
     </div>
@@ -155,10 +162,8 @@ const bookNameFilterString = computed(() => {
 
     <div class="word-graphs">
       <div class="word-graph">
-        <WordPiePerTestament
-          :wordPiePerTestamentModel="wordPiePerTestamentModel"
-          @testament-selected="testamentSelected"
-        />
+        <WordPiePerTestament :wordPiePerTestamentModel="wordPiePerTestamentModel"
+          @testament-selected="testamentSelected" />
       </div>
 
       <div class="word-graph">
@@ -168,10 +173,10 @@ const bookNameFilterString = computed(() => {
 
     <div class="word-graphs" v-if="wordGospelsRadarModel.show">
       <div class="word-graph">
-        <WordGospelsRadar :word-gospels-radar-model="wordGospelsRadarModel"/>
+        <WordGospelsRadar :word-gospels-radar-model="wordGospelsRadarModel" />
       </div>
 
- 
+
     </div>
 
     <div class="filters">
@@ -208,6 +213,7 @@ const bookNameFilterString = computed(() => {
 .header {
   margin-bottom: 10px;
 }
+
 .filter-header {
   margin-bottom: 10px;
 }
@@ -215,11 +221,13 @@ const bookNameFilterString = computed(() => {
 .words-list {
   margin-bottom: 10px;
 }
+
 .selected-word {
   text-align: center;
   margin-bottom: 10px;
   font-size: 4rem;
 }
+
 .word-graphs {
   display: flex;
   margin-bottom: 10px;
