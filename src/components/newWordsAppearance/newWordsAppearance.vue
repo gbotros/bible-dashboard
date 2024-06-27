@@ -14,7 +14,7 @@ const props = defineProps<{
 
   <div v-for="(bookModel, bookName) in newWordsAppearanceModel.data" :key="bookName" class="book">
 
-    <h1>{{ bookName }} {{ bookModel.uniqueWords.length + bookModel.newWords.length }}</h1>
+    <h1> {{ bookName }} </h1>
 
     <div v-if="bookModel.uniqueWords.length > 0">
       <h2>{{ bookModel.uniqueWords.length }} Unique Words </h2>
