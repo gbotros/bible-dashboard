@@ -3,7 +3,7 @@ import type { BibleLoaderService } from '@/data/bibleLoader'
 import type { IVerse } from '@/data/iBible'
 
 export class WordReferencesFactory {
-  constructor(private bibleLoaderService: BibleLoaderService) {}
+  constructor(private bibleLoaderService: BibleLoaderService) { }
 
   public getModelFor(
     word: string,
@@ -21,14 +21,6 @@ export class WordReferencesFactory {
       const bookNameSection = ref.slice(0, lastSpaceIndex)
       const chapterVerseSections = ref.slice(lastSpaceIndex + 1)
       const [chapterSection, verseSection] = chapterVerseSections.split(':')
-
-      // console.log({
-      //   refSections,
-      //   bookNameSection,
-      //   chapterVerseSections,
-      //   chapterSection,
-      //   verseSection
-      // })
 
       if (bookNameFilter && bookNameFilter != bookNameSection) return
       if (testamentFilter && testamentFilter != MetaBibleBooksDictionary[bookNameSection].testament)

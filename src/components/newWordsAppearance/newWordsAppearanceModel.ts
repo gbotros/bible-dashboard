@@ -1,3 +1,4 @@
+import type { IWordCount } from "@/data/IWordCount"
 
 export class WordsAppearanceModel {
   public data: { [bookName: string]: WordsAppearanceBookModel } = {}
@@ -11,6 +12,6 @@ export class WordsAppearanceBookModel {
   }
 
   public name: string = ""
-  public newWords: string[] = []
-  public uniqueWords: string[] = []
+  public newWords: IWordCount[] = []
+  public uniqueWords: IWordCount[] = []
 }

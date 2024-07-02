@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { MetaBibleBooksOrderedChronologically } from "@/data/bibleBookMeta";
 import { WordsAppearanceModel } from "./newWordsAppearanceModel";
+import BookWordsAppearance from '@/components/newWordsAppearance/bookWordsAppearance/bookWordsAppearance.vue';
 
 const props = defineProps<{
   newWordsAppearanceModel: WordsAppearanceModel
@@ -13,30 +13,7 @@ const props = defineProps<{
 <template>
 
   <div v-for="(bookModel, bookName) in newWordsAppearanceModel.data" :key="bookName" class="book">
-
-    <h1> {{ bookName }} </h1>
-
-    <div v-if="bookModel.uniqueWords.length > 0">
-      <h2>{{ bookModel.uniqueWords.length }} Unique Words </h2>
-      <div class="words-container">
-        <span v-for="word in bookModel.uniqueWords" :key="word" class="word">
-          <router-link :to="{ name: 'home', params: { word: word } }">
-            {{ word }}
-          </router-link>
-        </span>
-      </div>
-    </div>
-
-    <div v-if="bookModel.newWords.length > 0">
-      <h2>{{ bookModel.newWords.length }} New Words </h2>
-      <div class="words-container">
-        <span v-for="word in bookModel.newWords" :key="word" class="word">
-          <router-link :to="{ name: 'home', params: { word: word } }">
-            {{ word }}
-          </router-link>
-        </span>
-      </div>
-    </div>
+    <BookWordsAppearance :book-words-appearance-model="bookModel"></BookWordsAppearance>
   </div>
 </template>
 

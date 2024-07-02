@@ -1,7 +1,9 @@
 import type { BibleLoaderService } from '@/data/bibleLoader'
-import { Job, MetaBibleBooksDictionary, MetaBibleBooksOrderedChronologically, MetaBibleBooksOrderedChronologicallyDesc, Revelation, Testament, type IBibleBookMeta } from '@/data/bibleBookMeta'
+import { MetaBibleBooksDictionary, MetaBibleBooksOrderedChronologically, MetaBibleBooksOrderedChronologicallyDesc, Testament } from '@/data/bibleBookMeta'
 import { WordsAppearanceBookModel, type WordsAppearanceModel } from './newWordsAppearanceModel'
 import type { IBibleSummary } from '@/data/iBibleSummary';
+import type { IWordCount } from '@/data/IWordCount';
+
 
 // expermental component to show new words appearance based on the books Ordered chronologicaly
 export class NewWordsAppearanceFactory {
@@ -28,11 +30,11 @@ export class NewWordsAppearanceFactory {
       const bookWords = this.getAllWordsForBook(bookName, summary);
       const bookModel = this.model.data[bookName];
 
-      bookWords.forEach((word) => {
-        if (accumulatedUniqueWords.has(word)) return
+      bookWords.forEach((wordEntry) => {
+        if (accumulatedUniqueWords.has(wordEntry.word)) return
 
-        bookModel.newWords.push(word)
-        accumulatedUniqueWords.add(word)
+        bookModel.newWords.push(wordEntry)
+        accumulatedUniqueWords.add(wordEntry.word)
       })
     })
 
@@ -44,41 +46,36 @@ export class NewWordsAppearanceFactory {
 
       const bookNewWords = this.model.data[bookName].newWords;
       const bookUniqueWords = this.model.data[bookName].uniqueWords;
-      // console.log({ bookName });
 
       for (let i = bookNewWords.length - 1; i >= 0; i--) {
-        const word = bookNewWords[i]
-        // console.log({ word })
-        if (!usedWords.has(word)) {
+        const wordEntry = bookNewWords[i]
+        if (!usedWords.has(wordEntry.word)) {
           bookNewWords.splice(i, 1);
-          bookUniqueWords.push(word);
-          // console.log(`${ word } is unique to ${bookName}`)
+          bookUniqueWords.push(wordEntry);
         }
       }
 
       const bookWords = this.getAllWordsForBook(bookName, summary);
-      bookWords.forEach(w => usedWords.add(w));
+      bookWords.forEach(wEntry => usedWords.add(wEntry.word));
     })
 
     for (const bookName in this.model.data) {
-      this.model.data[bookName].newWords = this.model.data[bookName].newWords.sort()
-      this.model.data[bookName].uniqueWords = this.model.data[bookName].uniqueWords.sort()
+      this.model.data[bookName].newWords = this.model.data[bookName].newWords.sort((wordA, wordB) => wordB.count - wordA.count)
+      this.model.data[bookName].uniqueWords = this.model.data[bookName].uniqueWords.sort((wordA, wordB) => wordB.count - wordA.count)
     }
 
     this.loaded = true;
     return this.model;
   }
 
-  private getAllWordsForBook(bookName: string, summary: IBibleSummary) {
-    const bookWords = new Set<string>()
-    const book = MetaBibleBooksDictionary[bookName]
-    if (book.testament.valueOf() === Testament.oldTestament)
-      Object.keys(summary.oldTestamentSummary.books[bookName].words).forEach((w) => bookWords.add(w)
-      );
+  private getAllWordsForBook(bookName: string, summary: IBibleSummary): IWordCount[] {
 
-    if (book.testament.valueOf() === Testament.newTestament)
-      Object.keys(summary.newTestamentSummary.books[bookName].words).forEach((w) => bookWords.add(w)
-      );
+    const book = MetaBibleBooksDictionary[bookName]
+    const bookSummary = (book.testament.valueOf() === Testament.oldTestament)
+      ? summary.oldTestamentSummary.books[bookName]
+      : summary.newTestamentSummary.books[bookName];
+    console.log(bookSummary)
+    const bookWords: IWordCount[] = Object.entries(bookSummary.words).map(e => ({ word: e[0], count: e[1] }))
     return bookWords;
   }
 
